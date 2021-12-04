@@ -1,0 +1,23 @@
+[
+    {
+        "id": "d19c602c9f07b3fa",
+        "type": "openweathermap",
+        "z": "803ef132998215e6",
+        "name": "Temperature Paris",
+        "wtype": "current",
+        "lon": "",
+        "lat": "",
+        "city": "Paris",
+        "country": "Fance",
+        "language": "en",
+        "x": 410,
+        "y": 420,
+        "wires": [
+            [
+                "f77ab6c7b37a708e",
+                "6f179483e22772d7",
+                "380fc605053bbb2f"
+            ]
+        ]
+    }
+]
