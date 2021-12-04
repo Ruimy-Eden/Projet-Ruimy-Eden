@@ -1,6 +1,6 @@
 Outil utilisé :
 
-J'ai installé node red via le terminal de ma Raspberry avec la commande sudo ap-get install nodered
+J'ai installé node red via le terminal de ma Raspberry avec la commande sudo apt-get install nodered
 puis nodered starts.
 L'interface est assez intuitive en fesant glisser les modules.
 De nombreux réglages sont disponibles qui offre beaucoup de possibilités.
