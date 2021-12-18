@@ -1,0 +1,697 @@
+[
+    {
+        "id": "82dd7cf5a98fa6c2",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "d3eaefe29a80266d",
+        "type": "mqtt in",
+        "z": "82dd7cf5a98fa6c2",
+        "name": "",
+        "topic": "temperature",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "6c4a181a4083f3ca",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 270,
+        "y": 560,
+        "wires": [
+            [
+                "13c775e152b69406",
+                "2b0fd68043719205"
+            ]
+        ]
+    },
+    {
+        "id": "13c775e152b69406",
+        "type": "change",
+        "z": "82dd7cf5a98fa6c2",
+        "name": "temp",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$number(payload)",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 450,
+        "y": 560,
+        "wires": [
+            [
+                "1bf7c946f44167c9"
+            ]
+        ]
+    },
+    {
+        "id": "89b7cd9d0c31e33c",
+        "type": "change",
+        "z": "82dd7cf5a98fa6c2",
+        "name": "hum",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$number(payload)",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 510,
+        "y": 660,
+        "wires": [
+            [
+                "9e66aa9b24074c8e"
+            ]
+        ]
+    },
+    {
+        "id": "34fa70ca71e1a8a7",
+        "type": "ui_gauge",
+        "z": "82dd7cf5a98fa6c2",
+        "name": "Hygrometer",
+        "group": "f9412ecc.e353b",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Hygrometer",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 796,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "748122f07736d190",
+        "type": "change",
+        "z": "82dd7cf5a98fa6c2",
+        "name": "atm",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$number(payload)",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 509,
+        "y": 714,
+        "wires": [
+            [
+                "1721a587d98abf00"
+            ]
+        ]
+    },
+    {
+        "id": "4cee1a674406da2f",
+        "type": "ui_gauge",
+        "z": "82dd7cf5a98fa6c2",
+        "name": "Barometer",
+        "group": "f9412ecc.e353b",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Barometer",
+        "label": "mbar",
+        "format": "{{value}}",
+        "min": "900",
+        "max": "1100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 850,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "12bf5d3c3157b80c",
+        "type": "comment",
+        "z": "82dd7cf5a98fa6c2",
+        "name": "Environment Sensors",
+        "info": "",
+        "x": 240,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "9e66aa9b24074c8e",
+        "type": "smooth",
+        "z": "82dd7cf5a98fa6c2",
+        "name": "",
+        "property": "payload",
+        "action": "mean",
+        "count": "10",
+        "round": "1",
+        "mult": "single",
+        "reduce": false,
+        "x": 639.5,
+        "y": 660,
+        "wires": [
+            [
+                "34fa70ca71e1a8a7"
+            ]
+        ]
+    },
+    {
+        "id": "1721a587d98abf00",
+        "type": "smooth",
+        "z": "82dd7cf5a98fa6c2",
+        "name": "",
+        "property": "payload",
+        "action": "mean",
+        "count": "10",
+        "round": "1",
+        "mult": "single",
+        "x": 637.5,
+        "y": 714,
+        "wires": [
+            [
+                "4cee1a674406da2f"
+            ]
+        ]
+    },
+    {
+        "id": "7a1fb8d0f22f607d",
+        "type": "mqtt in",
+        "z": "82dd7cf5a98fa6c2",
+        "name": "",
+        "topic": "humidity",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "6c4a181a4083f3ca",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 260,
+        "y": 640,
+        "wires": [
+            [
+                "89b7cd9d0c31e33c",
+                "a1d24afb9a7693f3"
+            ]
+        ]
+    },
+    {
+        "id": "aa9888381ca285e3",
+        "type": "mqtt in",
+        "z": "82dd7cf5a98fa6c2",
+        "name": "",
+        "topic": "athmosphere",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "6c4a181a4083f3ca",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 270,
+        "y": 720,
+        "wires": [
+            [
+                "748122f07736d190",
+                "b8dc82c3bfea4f75"
+            ]
+        ]
+    },
+    {
+        "id": "6ee2c6c85b1f5cb1",
+        "type": "ui_gauge",
+        "z": "82dd7cf5a98fa6c2",
+        "name": "Thermometer",
+        "group": "f9412ecc.e353b",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Thermometer",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "60",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 840,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "a1d24afb9a7693f3",
+        "type": "debug",
+        "z": "82dd7cf5a98fa6c2",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 450,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "2b0fd68043719205",
+        "type": "debug",
+        "z": "82dd7cf5a98fa6c2",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "c20a41ffd10a7b81",
+        "type": "rpi-sensehat in",
+        "z": "82dd7cf5a98fa6c2",
+        "name": "",
+        "motion": true,
+        "env": false,
+        "stick": false,
+        "x": 200,
+        "y": 980,
+        "wires": [
+            [
+                "edd406e3584481e3"
+            ]
+        ]
+    },
+    {
+        "id": "aeae48197c4ef370",
+        "type": "comment",
+        "z": "82dd7cf5a98fa6c2",
+        "name": "Motion Sensors",
+        "info": "",
+        "x": 220,
+        "y": 925,
+        "wires": []
+    },
+    {
+        "id": "77e16c28e5bd5b9c",
+        "type": "mqtt out",
+        "z": "82dd7cf5a98fa6c2",
+        "name": "",
+        "topic": "acceleration",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "67a6491a3a7b608f",
+        "x": 730,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "22a693cf66b6d54f",
+        "type": "mqtt out",
+        "z": "82dd7cf5a98fa6c2",
+        "name": "",
+        "topic": "gyro",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "67a6491a3a7b608f",
+        "x": 730,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "9629d78cdd819882",
+        "type": "mqtt out",
+        "z": "82dd7cf5a98fa6c2",
+        "name": "",
+        "topic": "orientation",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "67a6491a3a7b608f",
+        "x": 730,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "b34489e5c60798f4",
+        "type": "mqtt out",
+        "z": "82dd7cf5a98fa6c2",
+        "name": "",
+        "topic": "compass",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "67a6491a3a7b608f",
+        "x": 720,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "2c745e870c4372f9",
+        "type": "inject",
+        "z": "82dd7cf5a98fa6c2",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "30",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "merci mylaine",
+        "payloadType": "str",
+        "x": 320,
+        "y": 1160,
+        "wires": [
+            [
+                "5edde8374fb4c72b"
+            ]
+        ]
+    },
+    {
+        "id": "5edde8374fb4c72b",
+        "type": "mqtt out",
+        "z": "82dd7cf5a98fa6c2",
+        "name": "",
+        "topic": "message",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "67a6491a3a7b608f",
+        "x": 580,
+        "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "1bf7c946f44167c9",
+        "type": "smooth",
+        "z": "82dd7cf5a98fa6c2",
+        "name": "",
+        "property": "payload",
+        "action": "mean",
+        "count": "10",
+        "round": "1",
+        "mult": "single",
+        "reduce": false,
+        "x": 620,
+        "y": 560,
+        "wires": [
+            [
+                "6ee2c6c85b1f5cb1"
+            ]
+        ]
+    },
+    {
+        "id": "b8dc82c3bfea4f75",
+        "type": "debug",
+        "z": "82dd7cf5a98fa6c2",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 450,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "edd406e3584481e3",
+        "type": "switch",
+        "z": "82dd7cf5a98fa6c2",
+        "name": "stick",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "motion",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 370,
+        "y": 980,
+        "wires": [
+            [
+                "e1c019fbd72117b9",
+                "180f93f53922bb8c",
+                "1e753545e38dfa56",
+                "61782f4250304293"
+            ]
+        ]
+    },
+    {
+        "id": "e1c019fbd72117b9",
+        "type": "change",
+        "z": "82dd7cf5a98fa6c2",
+        "name": "acceleration",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.acceleration",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 526,
+        "y": 920,
+        "wires": [
+            [
+                "77e16c28e5bd5b9c"
+            ]
+        ]
+    },
+    {
+        "id": "180f93f53922bb8c",
+        "type": "change",
+        "z": "82dd7cf5a98fa6c2",
+        "name": "gyroscope",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.gyroscope",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 526,
+        "y": 960,
+        "wires": [
+            [
+                "22a693cf66b6d54f"
+            ]
+        ]
+    },
+    {
+        "id": "1e753545e38dfa56",
+        "type": "change",
+        "z": "82dd7cf5a98fa6c2",
+        "name": "orientation",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.orientation",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 526,
+        "y": 1000,
+        "wires": [
+            [
+                "9629d78cdd819882"
+            ]
+        ]
+    },
+    {
+        "id": "61782f4250304293",
+        "type": "change",
+        "z": "82dd7cf5a98fa6c2",
+        "name": "compass",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.compass",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 516,
+        "y": 1040,
+        "wires": [
+            [
+                "b34489e5c60798f4"
+            ]
+        ]
+    },
+    {
+        "id": "6c4a181a4083f3ca",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "f9412ecc.e353b",
+        "type": "ui_group",
+        "name": "Environment Control",
+        "tab": "55925672.3514d8",
+        "order": 1,
+        "disp": true,
+        "width": "7",
+        "collapse": false
+    },
+    {
+        "id": "67a6491a3a7b608f",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.23.30",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "55925672.3514d8",
+        "type": "ui_tab",
+        "name": "PiSenseHAT",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
